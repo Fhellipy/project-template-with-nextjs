@@ -17,10 +17,28 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
+      "@assets/*": ["src/shared/assets/*"],
+      "@images/*": ["src/shared/assets/images/*"],
+      "@styles/*": ["./src/shared/assets/styles/*"],
+      "@components/*": ["src/shared/components/*"],
+      "@config/*": ["src/shared/config/*"],
+      "@hooks/*": ["src/shared/hooks/*"],
+      "@lib/*": ["src/shared/lib/*"],
+      "@middlewares/*": ["src/shared/middlewares/*"],
+      "@utils/*": ["src/shared/utils/*"],
+      "@modules/*": ["src/modules/*"],
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "tailwind.config.ts",
+    "postcss.config.js"
+  ],
   "exclude": ["node_modules"]
 }
