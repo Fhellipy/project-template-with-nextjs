@@ -1,5 +1,5 @@
-import { GlobalProviders } from "@components/common";
-import "@styles/global.css";
+import { GlobalProviders } from "@shared/components/common";
+import "@shared/styles/global.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 

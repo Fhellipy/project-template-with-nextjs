@@ -1,4 +1,4 @@
-import { ApiClient } from "@lib/fetch";
+import { ApiClient } from "../lib/fetch";
 import { publicEnv } from "./env";
 
 const BASE_API_URL = publicEnv.API_URL ?? "";

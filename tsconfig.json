@@ -1,17 +1,28 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2020",
+    "noImplicitAny": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
     "plugins": [
       {
         "name": "next"
@@ -19,17 +30,15 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/shared/assets/*"],
-      "@images/*": ["src/shared/assets/images/*"],
-      "@styles/*": ["./src/shared/assets/styles/*"],
-      "@components/*": ["src/shared/components/*"],
-      "@config/*": ["src/shared/config/*"],
-      "@hooks/*": ["src/shared/hooks/*"],
-      "@lib/*": ["src/shared/lib/*"],
-      "@middlewares/*": ["src/shared/middlewares/*"],
-      "@utils/*": ["src/shared/utils/*"],
-      "@modules/*": ["src/modules/*"],
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@shared/*": [
+        "src/shared/*"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ]
     }
   },
   "include": [
@@ -40,5 +49,7 @@
     "tailwind.config.ts",
     "postcss.config.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useVisualDebug } from "@hooks/use-visual-debug";
+import { useVisualDebug } from "@shared/hooks/use-visual-debug";
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -9,5 +9,5 @@ type MainLayoutProps = {
 export function MainLayout({ children }: MainLayoutProps) {
   useVisualDebug();
 
-  return <>{children}</>;
+  return <main className="p-4">{children}</main>;
 }
