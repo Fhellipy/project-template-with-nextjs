@@ -1,54 +1,72 @@
-import typescript from "@typescript-eslint/eslint-plugin";
-import typescriptParser from "@typescript-eslint/parser";
-import prettier from "eslint-plugin-prettier";
-import react from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-export default [
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
+});
+
+const config = [
   {
     ignores: [
-      "**/node_modules/**",
-      "**/dist/**",
+      "**/node_modules",
       "**/yarn.lock",
       "**/*-lock.json",
+      "*/javascript/*",
+      "**/coverage",
+      "**/.next",
+      "**/public",
+      "**/next-env.d.ts",
       "**/*.yml",
       "**/*.yaml",
     ],
-    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
-    languageOptions: {
-      parser: typescriptParser,
-    },
-    plugins: {
-      react,
-      "@typescript-eslint": typescript,
-      "react-hooks": reactHooks,
-      prettier,
-    },
+  },
+  ...compat.extends(
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+  ),
+  {
     rules: {
-      "react/display-name": "off",
       "react/prop-types": ["off"],
       "react/react-in-jsx-scope": ["off"],
-      "@typescript-eslint/explicit-module-boundary-types": ["off"],
-      "no-var": ["error"],
-      "no-unused-vars": ["off"],
-      "react/jsx-uses-vars": ["error"],
       "react/no-unescaped-entities": ["off"],
+      "no-unused-vars": ["off"],
+      "no-var": ["error"],
+
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+        },
+      ],
+
+      "no-inner-declarations": ["warn"],
+      "no-else-return": ["error"],
+      "no-useless-return": ["error"],
+      "no-lonely-if": ["error"],
 
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
           prefer: "type-imports",
           disallowTypeAnnotations: true,
-          fixStyle: "inline-type-imports",
+          fixStyle: "separate-type-imports",
         },
       ],
 
       "sort-imports": [
         "error",
         {
-          ignoreCase: false,
+          ignoreCase: true,
           ignoreDeclarationSort: true,
-          ignoreMemberSort: true,
+          ignoreMemberSort: false,
           allowSeparatedGroups: false,
           memberSyntaxSortOrder: ["none", "all", "single", "multiple"],
         },
@@ -56,3 +74,5 @@ export default [
     },
   },
 ];
+
+export default config;

@@ -9,5 +9,9 @@ type MainLayoutProps = {
 export function MainLayout({ children }: MainLayoutProps) {
   useVisualDebug();
 
-  return <main className="p-4">{children}</main>;
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-4 bg-gradient-to-tl from-blue-500 p-4">
+      {children}
+    </main>
+  );
 }

@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+const config = {
   darkMode: ["class"],
   content: ["./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
@@ -75,4 +74,5 @@ const config: Config = {
   plugins: [require("tailwindcss-animate")],
 };
 
-module.exports = config;
+export default config;
+
